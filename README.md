@@ -11,8 +11,8 @@ Hỗ trợ TypeScript đầy đủ, modular imports, tree-shaking và không có
 - [Website ViHAT](https://vihat.vn/)
 - [Cổng dịch vụ eSMS](https://esms.vn/)
 - [npm](https://www.npmjs.com/package/vihat-sdk)
-- [GitHub](https://github.com/petertuananh/ViHAT)
-- [Báo lỗi / Góp ý](https://github.com/petertuananh/ViHAT/issues)
+- [GitHub](https://github.com/petertuananh/ViHAT-SDK)
+- [Báo lỗi / Góp ý](https://github.com/petertuananh/ViHAT-SDK/issues)
 
 > ⚠️ **LƯU Ý QUAN TRỌNG:** Đây là thư viện **backend-only**. Không bao giờ import `VihatClient` trong frontend client-side như React, Vue, Angular hay trình duyệt vì `ApiKey` và `SecretKey` phải được giữ bí mật an toàn trên máy chủ.
 

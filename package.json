@@ -77,12 +77,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/petertuananh/ViHAT.git"
+    "url": "git+https://github.com/petertuananh/ViHAT-SDK.git"
   },
   "bugs": {
-    "url": "https://github.com/petertuananh/ViHAT/issues"
+    "url": "https://github.com/petertuananh/ViHAT-SDK/issues"
   },
-  "homepage": "https://github.com/petertuananh/ViHAT#readme",
+  "homepage": "https://github.com/petertuananh/ViHAT-SDK#readme",
   "engines": {
     "node": ">=18.0.0"
   },
