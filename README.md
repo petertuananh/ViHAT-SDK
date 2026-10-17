@@ -1,4 +1,4 @@
-# 📦 vihat
+# 📦 vihat-sdk
 
 Thư viện Node.js hiện đại cho tích hợp các dịch vụ **[ViHAT](https://vihat.vn/) / [eSMS.vn](https://esms.vn/)** (SMS Brandname, Voice OTP, Zalo ZNS, Multi-Channel, Viber) vào ứng dụng của bạn.
 
@@ -10,7 +10,7 @@ Hỗ trợ TypeScript đầy đủ, modular imports, tree-shaking và không có
 
 - [Website ViHAT](https://vihat.vn/)
 - [Cổng dịch vụ eSMS](https://esms.vn/)
-- [npm](https://www.npmjs.com/package/vihat)
+- [npm](https://www.npmjs.com/package/vihat-sdk)
 - [GitHub](https://github.com/petertuananh/ViHAT)
 - [Báo lỗi / Góp ý](https://github.com/petertuananh/ViHAT/issues)
 
@@ -59,20 +59,20 @@ Hỗ trợ TypeScript đầy đủ, modular imports, tree-shaking và không có
 Cài đặt thư viện thông qua npm:
 
 ```bash
-npm install vihat
+npm install vihat-sdk
 ```
 
 Hoặc qua yarn / pnpm / bun:
 
 ```bash
 # yarn
-yarn add vihat
+yarn add vihat-sdk
 
 # pnpm
-pnpm add vihat
+pnpm add vihat-sdk
 
 # bun
-bun add vihat
+bun add vihat-sdk
 ```
 
 ---
@@ -93,26 +93,26 @@ import {
   TelcoId,
   parseSmsCallback,
   parseVoiceCallback,
-} from "vihat";
+} from "vihat-sdk";
 ```
 
 ### Import theo module (Modular imports / Tree-shaking)
 
 ```typescript
 // Các hằng số và Enum
-import { SmsType, SendStatus, VoiceSpeaker } from "vihat/constants";
+import { SmsType, SendStatus, VoiceSpeaker } from "vihat-sdk/constants";
 
 // Lỗi
-import { VihatApiError, VihatValidationError } from "vihat/errors";
+import { VihatApiError, VihatValidationError } from "vihat-sdk/errors";
 
 // Helper Webhook / Callback
-import { parseSmsCallback, parseVoiceCallback } from "vihat/callback";
+import { parseSmsCallback, parseVoiceCallback } from "vihat-sdk/callback";
 
 // Services riêng lẻ
-import { SmsService } from "vihat/sms";
-import { VoiceService } from "vihat/voice";
-import { ZaloService } from "vihat/zalo";
-import { ViberService } from "vihat/viber";
+import { SmsService } from "vihat-sdk/sms";
+import { VoiceService } from "vihat-sdk/voice";
+import { ZaloService } from "vihat-sdk/zalo";
+import { ViberService } from "vihat-sdk/viber";
 ```
 
 ### Types-only (TypeScript)
@@ -127,7 +127,7 @@ import type {
   MakeVoiceCallTemplateOptions,
   SmsCallbackPayload,
   VoiceCallbackPayload,
-} from "vihat/types";
+} from "vihat-sdk/types";
 ```
 
 ---
@@ -135,7 +135,7 @@ import type {
 ## 💳 Khởi tạo client
 
 ```typescript
-import { VihatClient } from "vihat";
+import { VihatClient } from "vihat-sdk";
 
 const vihat = new VihatClient({
   apiKey: process.env.ESMS_API_KEY!,
@@ -199,7 +199,7 @@ console.log(`Số dư: ${balance.Balance.toLocaleString('vi-VN')} VND (UserID: $
 Hỗ trợ gửi SMS Brandname chăm sóc khách hàng hoặc đầu số cố định 10 số.
 
 ```typescript
-import { SmsType } from "vihat";
+import { SmsType } from "vihat-sdk";
 
 // Gửi tin nhắn Brandname CSKH
 const result = await vihat.sendSms({
@@ -240,7 +240,7 @@ eSMS cung cấp API tự động tạo mã OTP ngẫu nhiên:
 - **Type 2 (`GEN_AND_SEND`):** Hệ thống sinh mã và tự động kích hoạt kịch bản gửi tin (Zalo ZNS ➔ SMS fallback).
 
 ```typescript
-import { OtpGenType } from "vihat";
+import { OtpGenType } from "vihat-sdk";
 
 // Type 1: Chỉ lấy mã OTP
 const otp = await vihat.generateOtp({
@@ -278,7 +278,7 @@ console.log("Cuộc gọi OTP SMSID:", voiceOtp.SMSID);
 #### Cuộc gọi tự động theo Template Text-To-Speech
 
 ```typescript
-import { VoiceSpeaker, VoiceSpeed } from "vihat";
+import { VoiceSpeaker, VoiceSpeed } from "vihat-sdk";
 
 const voiceCall = await vihat.makeVoiceCallTemplate({
   phone: "0901234567",
@@ -442,7 +442,7 @@ await vihat.sendZaloFollowerButton({
 Tính năng thông minh giúp tối ưu chi phí: Gửi qua Zalo ZNS trước, nếu gửi thất bại hoặc khách không dùng Zalo, hệ thống tự động chuyển tiếp nội dung sang SMS:
 
 ```typescript
-import { SmsType } from "vihat";
+import { SmsType } from "vihat-sdk";
 
 const multiResult = await vihat.sendMultiChannel({
   phone: "0350000026",
@@ -487,7 +487,7 @@ eSMS sẽ gọi đến `CallbackUrl` của bạn khi trạng thái tin nhắn ho
 
 ```typescript
 import express from "express";
-import { parseSmsCallback, parseVoiceCallback, SendStatus, getTelcoName } from "vihat";
+import { parseSmsCallback, parseVoiceCallback, SendStatus, getTelcoName } from "vihat-sdk";
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -535,7 +535,7 @@ import {
   VihatValidationError,
   VihatTimeoutError,
   VihatHttpError,
-} from "vihat";
+} from "vihat-sdk";
 
 try {
   await vihat.sendSms({
