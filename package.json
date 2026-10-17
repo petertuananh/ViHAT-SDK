@@ -77,7 +77,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/petertuananh/ViHAT.git"
+    "url": "git+https://github.com/petertuananh/ViHAT.git"
   },
   "bugs": {
     "url": "https://github.com/petertuananh/ViHAT/issues"
