@@ -1,0 +1,93 @@
+{
+  "name": "vihat",
+  "version": "1.0.0",
+  "description": "Node.js library for ViHAT (eSMS.vn) API: SMS Brandname, Voice OTP, Zalo ZNS, Multi-Channel, and Viber",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./constants": {
+      "types": "./dist/esm/constants.d.ts",
+      "import": "./dist/esm/constants.js",
+      "require": "./dist/cjs/constants.js"
+    },
+    "./errors": {
+      "types": "./dist/esm/errors.d.ts",
+      "import": "./dist/esm/errors.js",
+      "require": "./dist/cjs/errors.js"
+    },
+    "./types": {
+      "types": "./dist/esm/types/index.d.ts"
+    },
+    "./sms": {
+      "types": "./dist/esm/services/sms.d.ts",
+      "import": "./dist/esm/services/sms.js",
+      "require": "./dist/cjs/services/sms.js"
+    },
+    "./voice": {
+      "types": "./dist/esm/services/voice.d.ts",
+      "import": "./dist/esm/services/voice.js",
+      "require": "./dist/cjs/services/voice.js"
+    },
+    "./zalo": {
+      "types": "./dist/esm/services/zalo.d.ts",
+      "import": "./dist/esm/services/zalo.js",
+      "require": "./dist/cjs/services/zalo.js"
+    },
+    "./viber": {
+      "types": "./dist/esm/services/viber.d.ts",
+      "import": "./dist/esm/services/viber.js",
+      "require": "./dist/cjs/services/viber.js"
+    },
+    "./callback": {
+      "types": "./dist/esm/services/callback.d.ts",
+      "import": "./dist/esm/services/callback.js",
+      "require": "./dist/cjs/services/callback.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json && node -e \"require('fs').writeFileSync('dist/cjs/package.json', '{\\\"type\\\":\\\"commonjs\\\"}')\"",
+    "build": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\" && npm run build:esm && npm run build:cjs",
+    "test": "node --test test/*.test.js test/*.test.mjs",
+    "prepack": "npm run build"
+  },
+  "keywords": [
+    "vihat",
+    "esms",
+    "sms",
+    "sms-brandname",
+    "voice-otp",
+    "zalo",
+    "zns",
+    "viber",
+    "multi-channel",
+    "vietnam-sms",
+    "typescript"
+  ],
+  "author": "Peter Tuan Anh <petertuananh@hotmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/petertuananh/ViHAT.git"
+  },
+  "bugs": {
+    "url": "https://github.com/petertuananh/ViHAT/issues"
+  },
+  "homepage": "https://github.com/petertuananh/ViHAT#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2"
+  }
+}
